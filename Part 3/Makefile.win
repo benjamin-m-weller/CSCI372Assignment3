@@ -1,0 +1,42 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o billTypeImplementation.o doctorTypeImplementation.o patientTypeImplementation.o personTypeImplementation.o $(RES)
+LINKOBJ  = main.o billTypeImplementation.o doctorTypeImplementation.o patientTypeImplementation.o personTypeImplementation.o $(RES)
+LIBS =   
+INCS = 
+CXXINCS = 
+BIN  = "Project 3.exe"
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Project 3.exe" all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Project 3.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+billTypeImplementation.o: billTypeImplementation.cpp
+	$(CPP) -c billTypeImplementation.cpp -o billTypeImplementation.o $(CXXFLAGS)
+
+doctorTypeImplementation.o: doctorTypeImplementation.cpp
+	$(CPP) -c doctorTypeImplementation.cpp -o doctorTypeImplementation.o $(CXXFLAGS)
+
+patientTypeImplementation.o: patientTypeImplementation.cpp
+	$(CPP) -c patientTypeImplementation.cpp -o patientTypeImplementation.o $(CXXFLAGS)
+
+personTypeImplementation.o: personTypeImplementation.cpp
+	$(CPP) -c personTypeImplementation.cpp -o personTypeImplementation.o $(CXXFLAGS)
