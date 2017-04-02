@@ -29,11 +29,19 @@ void bankAccount::withdraw(double amount)
 	balance-=amount;
 }
 
-void bankAccount::getAccountInfo()
+void bankAccount::setBalance(double amount)
 {
-	cout<<"Hello this is the bank account information\n"
-	<<"Your bank account number is: "<<getAccountNumber()<<"\n"
-	<<"Your account balance is: "<<getBalance()<<endl;
+	balance=amount;
+}
+
+void setOwnerName(string ownerName)
+{
+	this->ownerName=ownerName;
+}
+
+string getOwnerName()
+{
+	return ownerName;
 }
 
 bankAccount::bankAccount()
@@ -48,7 +56,7 @@ bankAccount::bankAccount(int accNumber, double bal, string ownerName)
 	//Overloaded constructor
 	accountNumber=accNumber;
 	balance=bal;
-	this.ownerName=ownerName
+	this->ownerName=ownerName;
 }
 
 

@@ -15,7 +15,7 @@ public:
 	void setMinimumBalance(double amount);
 	
 	
-	//Withdraw some money to the account
+	//Withdraw some money from the account
 	void withdraw(double amount);
 	
 	//Interest rate stuff
@@ -33,9 +33,8 @@ public:
 	//Write a check
 	virtual int writeCheck(double amount);
 	
-	//Get account information
-	void getAccountInfo();
-		
+	int getCheckNumber();
+			
 	//Constructors
 	checkingAccount();
 	checkingAccount(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName);

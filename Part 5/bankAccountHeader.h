@@ -1,5 +1,7 @@
+#include <string>
 #ifndef bankAccountHeader_H
 #define bankAccountHeader_H
+
 //This is my definition of the bank account.
 
 using namespace std;
@@ -16,7 +18,7 @@ public:
 	virtual void getAccountInfo();
 	void setOwnerName(string ownerName);
 	string getOwnerName();
-	
+	void setBalance(double amount);
 	
 	//Constructors
 	bankAccount();

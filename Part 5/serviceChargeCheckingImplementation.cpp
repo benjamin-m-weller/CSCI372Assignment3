@@ -1,5 +1,8 @@
+#include <iostream>
 #include "checkingAccountHeader.h"
-#include "serviceChargeChecking.h"
+#include "serviceChargeCheckingHeader.h"
+
+using namespace std;
 
 void serviceChargeChecking::postInterest()
 {
@@ -13,25 +16,48 @@ bool serviceChargeChecking::isAccountBelowMinBalance()
 
 int serviceChargeChecking::writeCheck(double amount)
 {
-	int returned=0;
 	if (numberOfChecksWritten<numberOfChecksAllowable)
 	{
 		numberOfChecksWritten++;
-		returned=checkingAccount::writeCheck(amount);
+		checkingAccount::withdraw(amount);
 	}
 	else
 	{
 		double charges=checkingAccount::getServiceCharges();
-		
-		returned=checkingAccount::writeCheck(amount);
+		checkingAccount::withdraw(amount);
 		checkingAccount::withdraw(charges);
 	}
-	return returned;
+	return checkingAccount::getCheckNumber();
 }
 
 void serviceChargeChecking::getAccountInfo()
 {
-	checkingAccount::getAccountInfo();
-	cout<<"The maximum number of checks allowable for this account is: "<<numberOfChecksAllowable<<"\n"
+	cout<<"Hello this is the bank account information\n"
+	<<"Your bank account number is: "<<bankAccount::getAccountNumber()<<"\n"
+	<<"Your account balance is: "<<bankAccount::getBalance()<<"\n"
+	<<"The owner of this account is: "<<bankAccount::getOwnerName()<<"\n"
+	<<"The maximum number of checks allowable for this account is: "<<numberOfChecksAllowable<<"\n"
 	<<"The number of checks currently written is: "<<numberOfChecksWritten<<endl;
 }
+
+serviceChargeChecking::serviceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName, int numberOfChecksAllowable)
+:checkingAccount(intRate, minBal, serCharges, checkNum, accountNumber, balance, ownerName)
+{
+	this->numberOfChecksAllowable=numberOfChecksAllowable;
+	numberOfChecksWritten=0;
+		
+}
+	
+serviceChargeChecking::serviceChargeChecking()
+:checkingAccount()
+{
+	
+}
+
+
+
+
+
+
+
+

@@ -1,5 +1,8 @@
+#include <iostream>
 #include "bankAccountHeader.h"
 #include "checkingAccountHeader.h"
+
+using namespace std;
 
 double checkingAccount::getMinimumBalance()
 {
@@ -13,7 +16,7 @@ void checkingAccount::setMinimumBalance(double amount)
 
 void checkingAccount::withdraw(double amount)
 {
-	balance-=amount;
+	bankAccount::setBalance(bankAccount::getBalance()-amount);
 	isAccountBelowMinBalance();
 }
 
@@ -29,45 +32,33 @@ void checkingAccount::setInterestRate(double amount)
 
 void checkingAccount::postInterest()
 {
-	if (balance>0)
+	if (bankAccount::getBalance()>0)
 	{
-		balance+=((1+interestRate)*balance);
+		bankAccount::setBalance(bankAccount::getBalance()+((1+interestRate)*bankAccount::getBalance()));
 	}
 }
 
 double checkingAccount::getServiceCharges()
 {
-	return serviceCharges
+	return serviceCharges;
 }
 
 void checkingAccount::setServiceCharges(double amount)
 {
-	serviceCharge=amount;
+	serviceCharges=amount;
 }
 
 bool checkingAccount::isAccountBelowMinBalance()
 {
-	if (balance<minimumBalance)
+	if (bankAccount::getBalance()<minimumBalance)
 	{
-		balance-=serviceCharges;
+		bankAccount::setBalance(bankAccount::getBalance()-serviceCharges);
 	}
 }
 
-int checkingAccount::writeCheck(double amount)
-{	
-	withdraw(amount);
-	checkNumber++;
-}
-
-void checkingAccount::getAccountInfo()
+int checkingAccount::getCheckNumber()
 {
-	bankAccount::getAccountInfo();
-	cout<<"The interest rate is: "<<getInterestRate()<<"\n"
-	<<"The minimum balance is: "<<getMinimumBalance()<<"\n"
-	<<"The service charge rate is: "<<getServiceCharges()<<"\n"
-	<<"The total number of checks written is "<<checkNumber<<"\n"
-	<<"You account is below the minimum balance: "<<isAccountBelowMinBalance()<<"\n"
-	<<endl;
+	return checkNumber;
 }
 
 

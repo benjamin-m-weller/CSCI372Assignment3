@@ -9,11 +9,15 @@ using namespace std;
 class noServiceChargeChecking: public checkingAccount
 {
 public:
-	//Removing the service charge functionality
-	double  getServiceCharges();
-	void setServiceCharges(double amount);
+	
+	int writeCheck(double amount);
+	
+	void getAccountInfo();
 	
 	noServiceChargeChecking();
 	noServiceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName);
-}
+	
+private:
+	double minimumBalance;
+};
 #endif

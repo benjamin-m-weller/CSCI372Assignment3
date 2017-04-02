@@ -29,12 +29,18 @@ void bankAccount::withdraw(double amount)
 	balance-=amount;
 }
 
+void bankAccount::setBalance(double amount)
+{
+	balance=amount;
+}
+
 void bankAccount::getAccountInfo()
 {
 	cout<<"Hello this is the bank account information\n"
 	<<"Your bank account number is: "<<getAccountNumber()<<"\n"
 	<<"Your account balance is: "<<getBalance()<<endl;
 }
+
 
 bankAccount::bankAccount()
 {

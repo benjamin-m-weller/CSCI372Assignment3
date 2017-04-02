@@ -1,5 +1,6 @@
-#include "highInterestChecking.h"
-#include "noServiceChargeChecking.h"
+#include <iostream>
+#include "highInterestCheckingHeader.h"
+#include "noServiceChargeCheckingHeader.h"
 
 using namespace std;
 
@@ -14,13 +15,13 @@ void highInterestChecking::setMinimumBalance(double amount)
 }
 
 highInterestChecking::highInterestChecking()
-:checkingAccount()
+:noServiceChargeChecking()
 {
 	//Nothing
 }
 
 highInterestChecking::highInterestChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName)
-:checkingAccount(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName)
+:noServiceChargeChecking(intRate, minBal, serCharges, checkNum, accountNumber, balance, ownerName)
 {
 	//Nothing
 }

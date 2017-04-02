@@ -177,6 +177,13 @@ break;
 
 void populateStructsArray(CountsLetters myArray[], int arrayLength)
 {
+	//Going to make all the counts innitially 0
+	for (int i=0; i<arrayLength; i++)
+	{
+		myArray[i].count=0;
+	}
+	
+	//This is a massive switch for all the characters
 	for (int i=0; i<arrayLength; i++)
 	{
 	switch (i)
@@ -348,7 +355,7 @@ void readFiles(ifstream &myStream, CountsLetters myArray[], int arrayLength)
 	
 	
 	string line;
-	while (myStream)
+	while (myStream.good())
 	{
 		myStream>>line;
 		incrementsCountOfLetter(myArray, arrayLength, line[0]);
@@ -370,7 +377,7 @@ void printsStats(CountsLetters myArray[], int arrayLength)
 			countLowercase+=myArray[i].count;
 		}
 		else //Array index 26 and above (it corrresponds to A-Z)
-		{
+		{			
 			countUppercase+=myArray[i].count;
 		}
 	}
@@ -387,11 +394,11 @@ void printsStats(CountsLetters myArray[], int arrayLength)
 		double var=0;
 		if (i<=25)
 		{
-			var=(myArray[i].count/countLowercase)*100;
+			var=(double)(myArray[i].count/countLowercase)*100;
 		}
 		else //Capital letters
 		{
-			var=(myArray[i].count/countUppercase)*100;
+			var=(double)(myArray[i].count/countUppercase)*100;
 		}
 		
 		cout<<myArray[i].character<<" "<<var<<endl;

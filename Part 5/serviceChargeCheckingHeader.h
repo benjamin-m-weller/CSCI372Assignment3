@@ -20,7 +20,7 @@ public:
 	int writeCheck(double amount);
 	
 	//Get account information
-	void getAccountInfo()
+	void getAccountInfo();
 	
 	serviceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName, int numberOfChecksAllowable);
 	
@@ -29,5 +29,5 @@ public:
 private:
 	int numberOfChecksAllowable;
 	int numberOfChecksWritten;
-}
+};
 #endif

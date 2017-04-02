@@ -25,7 +25,7 @@ public:
 		
 	//Constructors
 	savingsAccount();
-	savingsAccount(int accNumber, double bal, double interestRate, string ownerName);
+	savingsAccount(int accNumber, double bal, string ownerName, double interestRate);
 	
 	
 private:

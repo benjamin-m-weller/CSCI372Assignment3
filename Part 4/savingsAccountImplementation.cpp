@@ -1,10 +1,12 @@
+#include <iostream>
 #include "bankAccountHeader.h"
 #include "savingsAccountHeader.h"
 
+using namespace std;
+
 void savingsAccount::withdraw(double amount)
 {
-	balance-=amount;
-	isAccountBelowMinBalance();
+	bankAccount::setBalance(bankAccount::getBalance()-amount);
 }
 
 double savingsAccount::getInterestRate()
@@ -19,24 +21,21 @@ void savingsAccount::setInterestRate(double amount)
 
 void savingsAccount::postInterest()
 {
-	if (balance>0)
+	if (bankAccount::getBalance()>0)
 	{
-		balance+=((1+interestRate)*balance);
+		bankAccount::setBalance(bankAccount::getBalance()+((1+interestRate)*bankAccount::getBalance()));
 	}
 }
 
 void savingsAccount::getAccountInfo()
 {
 	bankAccount::getAccountInfo();
-	cout<<"The interest rate is: "<<interestRate<<endl
+	cout<<"The interest rate is: "<<interestRate<<endl;
 }
 
 savingsAccount::savingsAccount()
 {
 	interestRate=0.1;
-	minimumBalance=0.0;
-	serviceCharges=5.0;
-	checkNumber=0;
 }
 
 savingsAccount::savingsAccount(int accountNumber, double balance, double intRate)

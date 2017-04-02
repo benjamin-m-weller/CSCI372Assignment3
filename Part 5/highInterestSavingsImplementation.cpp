@@ -1,5 +1,6 @@
-#include "highInterestChecking.h"
-#include "noServiceChargeChecking.h"
+#include <iostream>
+#include "highInterestSavingsHeader.h"
+#include "noServiceChargeCheckingHeader.h"
 
 using namespace std;
 
@@ -10,12 +11,12 @@ using namespace std;
 	
 	void highInterestSavings::setServiceCharges(double serviceCharges)
 	{
-		this.serviceCharges=serviceCharges;
+		this->serviceCharges=serviceCharges;
 	}
 	
 	void highInterestSavings::applyServiceCharges()
 	{
-		if (savingsAccount::getBalance()<minumumBalance)
+		if (savingsAccount::getBalance()<minimumBalance)
 		{
 			savingsAccount::withdraw(serviceCharges);
 		}
@@ -28,17 +29,17 @@ using namespace std;
 	
 	void highInterestSavings::setMinimumBalance(double minimumBalance)
 	{
-		this.minimumBalance=minimumBalance;	
+		this->minimumBalance=minimumBalance;	
 	}
 	
 	highInterestSavings::highInterestSavings()
-	:checkingAccount()
+	:savingsAccount()
 	{
 		//Nothing
 	}
 	
 	highInterestSavings::highInterestSavings(int accNumber, double bal, double interestRate, double minimumBalance, double serviceCharges, string ownerName)
-	:bankAccount(accountNumber, balance, ownerName)
+	:savingsAccount(accNumber, bal, ownerName, interestRate)
 	{
 		//Nothing
 	}
