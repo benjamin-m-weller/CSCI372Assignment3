@@ -15,7 +15,7 @@ public:
 	void withdraw(double amount);
 	void deposit(double amount);
 	void setAccountNumber(int number);
-	virtual void getAccountInfo();
+	virtual void getAccountInfo() const;
 	void setOwnerName(string ownerName);
 	string getOwnerName();
 	void setBalance(double amount);

@@ -65,19 +65,12 @@ int checkingAccount::getCheckNumber()
 checkingAccount::checkingAccount()
 :bankAccount()
 {
-	interestRate=0.1;
-	minimumBalance=0.0;
-	serviceCharges=5.0;
-	checkNumber=0;
 }
 
-checkingAccount::checkingAccount(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName)
+checkingAccount::checkingAccount(int accountNumber, double balance, string ownerName)
 :bankAccount(accountNumber, balance, ownerName)
 {
-	interestRate=intRate;
-	minimumBalance=minBal;
-	serviceCharges=serCharges;
-	checkNumber=checkNum;
+}
 }
 
 

@@ -34,21 +34,25 @@ void bankAccount::setBalance(double amount)
 	balance=amount;
 }
 
-void setOwnerName(string ownerName)
+void bankAccount::setOwnerName(string ownerName)
 {
 	this->ownerName=ownerName;
 }
 
-string getOwnerName()
+string bankAccount::getOwnerName()
 {
 	return ownerName;
 }
 
+void bankAccount::getAccountInfo() const
+{
+	cout << "Account Name: " << ownerName << ", Account Number: " << accountNumber << ", Balance: $" << balance;
+}
+
+
 bankAccount::bankAccount()
 {
 	//Default constructor
-	accountNumber=0000;
-	balance=0.0;
 }
 
 bankAccount::bankAccount(int accNumber, double bal, string ownerName)

@@ -31,20 +31,17 @@ public:
 	bool isAccountBelowMinBalance();
 	
 	//Write a check
-	virtual int writeCheck(double amount);
+	virtual int writeCheck(double amount) =0;
 	
 	int getCheckNumber();
 			
 	//Constructors
 	checkingAccount();
-	checkingAccount(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName);
+	checkingAccount(int accountNumber, double balance, string ownerName);
 	
 	
 private:
-	double interestRate;
-	double minimumBalance;
-	double serviceCharges;
-	int checkNumber;
+	
 };
 
 #endif
