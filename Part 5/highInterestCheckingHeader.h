@@ -13,9 +13,9 @@ class highInterestChecking: public noServiceChargeChecking
 		void setInterestRate(double amount);
 		void setMinimumBalance(double amount);
 		
-		void getAccountInfo();
+		void getAccountInfo() const;
 		
 		highInterestChecking();
-		highInterestChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName);
+		highInterestChecking(double intRate, double minBal, int accountNumber, double balance, string ownerName);
 };
 #endif

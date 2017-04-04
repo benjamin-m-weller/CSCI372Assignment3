@@ -4,47 +4,65 @@
 
 using namespace std;
 
-void serviceChargeChecking::postInterest()
+void serviceChargeChecking::setnumberOfChecksAllowable(int numberOfChecksAllowable)
 {
-	//Yeah do nothing here
+this->numberOfChecksAllowable=numberOfChecksAllowable;
 }
 
-bool serviceChargeChecking::isAccountBelowMinBalance()
+int serviceChargeChecking::getnumberOfChecksAllowable()
 {
-	return false;
+return numberOfChecksAllowable;
 }
+
+void serviceChargeChecking::setserviceCharges(double serviceCharges)
+{
+this->serviceCharges=serviceCharges;
+}
+
+double serviceChargeChecking::getserviceCharges()
+{
+return serviceCharges;
+}
+
+
 
 int serviceChargeChecking::writeCheck(double amount)
 {
-	if (numberOfChecksWritten<numberOfChecksAllowable)
+	if (checkingAccount::getCheckNumber()<numberOfChecksAllowable)
 	{
-		numberOfChecksWritten++;
+		checkingAccount::incrementCheckNumber();
 		checkingAccount::withdraw(amount);
 	}
 	else
 	{
-		double charges=checkingAccount::getServiceCharges();
+		checkingAccount::incrementCheckNumber();
 		checkingAccount::withdraw(amount);
-		checkingAccount::withdraw(charges);
+		checkingAccount::withdraw(serviceCharges);
 	}
 	return checkingAccount::getCheckNumber();
 }
 
-void serviceChargeChecking::getAccountInfo()
+void serviceChargeChecking::getAccountInfo() const
 {
+	/*
 	cout<<"Hello this is the bank account information\n"
 	<<"Your bank account number is: "<<bankAccount::getAccountNumber()<<"\n"
 	<<"Your account balance is: "<<bankAccount::getBalance()<<"\n"
 	<<"The owner of this account is: "<<bankAccount::getOwnerName()<<"\n"
 	<<"The maximum number of checks allowable for this account is: "<<numberOfChecksAllowable<<"\n"
 	<<"The number of checks currently written is: "<<numberOfChecksWritten<<endl;
+	*/
+	checkingAccount::getAccountInfo();
+	cout<<"The maximum number of checks allowable for this account is: "<<numberOfChecksAllowable<<"\n"
+	<<"The service charge rate currently on the account is: "<<serviceCharges
+	<<endl;
 }
 
-serviceChargeChecking::serviceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName, int numberOfChecksAllowable)
-:checkingAccount(intRate, minBal, serCharges, checkNum, accountNumber, balance, ownerName)
+serviceChargeChecking::serviceChargeChecking(double serCharges, int numberOfChecksAllowable, int accountNumber, double balance, string ownerName)
+:checkingAccount(accountNumber, balance, ownerName)
 {
 	this->numberOfChecksAllowable=numberOfChecksAllowable;
-	numberOfChecksWritten=0;
+	this->serviceCharges=serCharges;
 		
 }
 	

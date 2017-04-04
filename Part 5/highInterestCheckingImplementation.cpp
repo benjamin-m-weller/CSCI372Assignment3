@@ -6,12 +6,18 @@ using namespace std;
 
 void highInterestChecking::setInterestRate(double amount)
 {
-	checkingAccount::setInterestRate(amount+.05);
+	noServiceChargeChecking::setinterestRate(amount+.05);
 }
 
 void highInterestChecking::setMinimumBalance(double amount)
 {
-	checkingAccount::setMinimumBalance(amount+100);
+	noServiceChargeChecking::setminimumBalance(amount+100);
+}
+
+void getAccountInfo() const
+{
+	noServiceChargeChecking::getAccountInfo();
+	cout<<"Please notice that if you pass the same numbers for minimum balance and interest rate, that the high interest checking account has higher values."<<endl;
 }
 
 highInterestChecking::highInterestChecking()
@@ -20,8 +26,9 @@ highInterestChecking::highInterestChecking()
 	//Nothing
 }
 
-highInterestChecking::highInterestChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName)
-:noServiceChargeChecking(intRate, minBal, serCharges, checkNum, accountNumber, balance, ownerName)
+highInterestChecking::highInterestChecking(double intRate, double minBal, int accountNumber, double balance, string ownerName)
+:noServiceChargeChecking(intRate, minBal, accountNumber, balance, ownerName)
 {
-	//Nothing
+	setInterestRate(intRate);
+	setMinimumBalance(minBal);
 }

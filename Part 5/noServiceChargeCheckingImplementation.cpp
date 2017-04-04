@@ -4,20 +4,61 @@
 
 using namespace std;
 
-int writeCheck(double amount)
+void noServiceChargeChecking::setminimumBalance(double minimumBalance)
 {
-	checkingAccount::withdraw(amount);
-	return checkingAccount::getCheckNumber();
+this->minimumBalance=minimumBalance;
 }
 
-void serviceChargeChecking::getAccountInfo()
+double noServiceChargeChecking::getminimumBalance()
 {
+return minimumBalance;
+}
+
+void noServiceChargeChecking::setinterestRate(double interestRate)
+{
+this->interestRate=interestRate;
+}
+
+double noServiceChargeChecking::getinterestRate()
+{
+return interestRate;
+}
+
+
+
+int noServiceChargeChecking:: writeCheck(double amount)
+{
+	//As long as they are above the minimum balance they can write a check.
+	//The return value will be the checknumber
+	int returned=0;
+	if (checkingAccount::getBalance()>minimumBalance)
+	{
+		checkingAccount::withdraw(amount);
+		returned=checkingAccount::getCheckNumber();
+	}
+	return returned;
+}
+
+void noServiceChargeChecking::getAccountInfo() const
+{
+	/*
 	cout<<"Hello this is the bank account information\n"
 	<<"Your bank account number is: "<<bankAccount::getAccountNumber()<<"\n"
 	<<"Your account balance is: "<<bankAccount::getBalance()<<"\n"
 	<<"The owner of this account is: "<<bankAccount::getOwnerName()<<"\n"
 	<<"The interest rate on this account is: "<<interestRate<<"\n"
-	<<endl;
+	<<endl; */
+	checkingAccount::getAccountInfo();
+	cout<<"The minimum balance on this account is: "<<minimumBalance<<"\n"
+	<<"The interest rate on this account is: "<<interestRate<<endl;
+}
+
+void noServiceChargeChecking::postInterest()
+{
+	if (bankAccount::getBalance()>0)
+	{
+		bankAccount::setBalance((1+interestRate)*bankAccount::getBalance());
+	}
 }
 
 noServiceChargeChecking::noServiceChargeChecking()
@@ -26,9 +67,11 @@ noServiceChargeChecking::noServiceChargeChecking()
 	//Nothing
 }
 
-noServiceChargeChecking::noServiceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName)
-:checkingAccount(intRate, minBal, serCharges, checkNum, accountNumber, balance, ownerName)
+noServiceChargeChecking::noServiceChargeChecking(double intRate, double minBal, int accountNumber, double balance, string ownerName)
+:checkingAccount(accountNumber, balance, ownerName)
 {
-	//Nothing
+	this->minimumBalance=minBal;
+	this->interestRate=intRate;
 }
+
 

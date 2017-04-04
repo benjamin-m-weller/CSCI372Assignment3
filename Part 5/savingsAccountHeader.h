@@ -9,11 +9,7 @@ using namespace std;
 class savingsAccount: public bankAccount
 {
 public:
-	
-	//Overrride base class method
-	//Withdraw some money to the account
-	void withdraw(double amount);
-	
+		
 	//Interest rate stuff
 	double  getInterestRate();
 	void setInterestRate(double amount);
@@ -21,7 +17,7 @@ public:
 	
 	
 	//Get account information
-	void getAccountInfo();
+	void getAccountInfo() const;
 		
 	//Constructors
 	savingsAccount();

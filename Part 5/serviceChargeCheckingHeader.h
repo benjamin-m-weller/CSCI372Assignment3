@@ -10,24 +10,27 @@ class serviceChargeChecking: public checkingAccount
 {
 public:
 	
-	//Making this do nothing
-	void postInterest();
-	
-	//Verify if current balance is below minimum
-	bool isAccountBelowMinBalance();
-	
+	void setnumberOfChecksAllowable(int numberOfChecksAllowable);
+
+	int getnumberOfChecksAllowable();
+
+	void setserviceCharges(double serviceCharges);
+
+	double getserviceCharges();
+
+		
 	//Write a check
 	int writeCheck(double amount);
 	
 	//Get account information
-	void getAccountInfo();
+	void getAccountInfo() const;
 	
-	serviceChargeChecking(double intRate, double minBal, double serCharges, int checkNum, int accountNumber, double balance, string ownerName, int numberOfChecksAllowable);
+	serviceChargeChecking(double serCharges, int numberOfChecksAllowable, int accountNumber, double balance, string ownerName);
 	
 	serviceChargeChecking();
 	
 private:
 	int numberOfChecksAllowable;
-	int numberOfChecksWritten;
+	double serviceCharges;
 };
 #endif

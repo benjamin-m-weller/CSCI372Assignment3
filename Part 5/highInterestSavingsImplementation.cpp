@@ -1,6 +1,6 @@
 #include <iostream>
 #include "highInterestSavingsHeader.h"
-#include "noServiceChargeCheckingHeader.h"
+#include "savingsAccountHeader.h"
 
 using namespace std;
 
@@ -32,6 +32,26 @@ using namespace std;
 		this->minimumBalance=minimumBalance;	
 	}
 	
+	void highInterestSavings::setInterestRate(double amount)
+	{
+		savingsAccount::setInterestRate(amount+.05);
+	}
+	
+	void highInterestSavings::postInterest()
+	{
+		if (bankAccount::getBalance()>0)
+		{
+		bankAccount::setBalance((1+interestRate)*bankAccount::getBalance());
+		}
+	}
+	
+	void highInterestSavings::getAccountInfo() const
+	{
+		savingsAccount::getAccountInfo();
+		cout<<"The minimum balance of this account is: "<<minimumBalance<<"\n"
+		<<"Please notice that if you pass the same number for the interest rate, that the high interest checking account has higher values."<<endl;
+	}
+	
 	highInterestSavings::highInterestSavings()
 	:savingsAccount()
 	{
@@ -41,5 +61,7 @@ using namespace std;
 	highInterestSavings::highInterestSavings(int accNumber, double bal, double interestRate, double minimumBalance, double serviceCharges, string ownerName)
 	:savingsAccount(accNumber, bal, ownerName, interestRate)
 	{
-		//Nothing
+		this->serviceCharges=serviceCharges;
+		this->minimumBalance=minimumBalance;
+		setInterestRate(interestRate);
 	}

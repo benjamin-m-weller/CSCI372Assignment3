@@ -18,7 +18,11 @@ class highInterestSavings: public savingsAccount
 	double getMinimumBalance();
 	void setMinimumBalance(double minimumBalance);
 	
-	void getAccountInfo();
+	void getAccountInfo() const;
+	
+	void postInterest();
+	
+	void setInterestRate(double amount);
 	
 	highInterestSavings();
 	highInterestSavings(int accNumber, double bal, double interestRate, double minimumBalance, double serviceCharges, string ownerName);

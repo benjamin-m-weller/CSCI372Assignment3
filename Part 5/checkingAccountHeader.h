@@ -9,14 +9,13 @@ using namespace std;
 class checkingAccount: public bankAccount
 {
 public:
-		
+	
+	/*	
 	//Minimum Balance stuff
 	double  getMinimumBalance();
 	void setMinimumBalance(double amount);
 	
 	
-	//Withdraw some money from the account
-	void withdraw(double amount);
 	
 	//Interest rate stuff
 	double  getInterestRate();
@@ -29,11 +28,19 @@ public:
 	
 	//Verify if current balance is below minimum
 	bool isAccountBelowMinBalance();
+	*/
 	
 	//Write a check
 	virtual int writeCheck(double amount) =0;
 	
+	virtual void getAccountInfo() const;
+	
+	//Withdraw some money from the account
+	void withdraw(double amount);
+	
+	
 	int getCheckNumber();
+	void incrementCheckNumber();
 			
 	//Constructors
 	checkingAccount();
@@ -41,6 +48,7 @@ public:
 	
 	
 private:
+	int checkNumber;
 	
 };
 
